@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Thông Tin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            width: 150px; /* Adjust as needed */
+            font-weight: bold;
+            text-align: right;
+            margin-right: 10px;
+        }
+        .form-group input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group input[type="number"] {
+            text-align: right; /* Align numbers to the right */
+        }
+        .form-group button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .form-row label {
+            width: 100px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nhập Thông Tin</h1>
+        <form action="#" method="post">
+            <div class="form-row">
+                <input type="text" id="name1" name="name1" placeholder="Nhập tên 1" required>
+                <input type="text" id="name1" name="name1" placeholder="Nhập tiền" required>
+            </div>
+            <div class="form-row">
+                <input type="text" id="name1" name="name1" placeholder="Nhập tên 2" required>
+                <input type="text" id="name2" name="name2" placeholder="Nhập tiền" required>
+            </div>
+            <div class="form-row">
+                <input type="text" id="name1" name="name1" placeholder="Nhập tên 3" required>
+                <input type="text" id="name3" name="name3" placeholder="Nhập tiền" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Gửi</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
