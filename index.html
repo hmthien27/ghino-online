@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý khoản nợ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quản lý khoản nợ</h1>
+    <form id="debtForm">
+        <label for="name">Họ tên</label>
+        <input type="text" id="name" required>
+        
+        <label for="amount">Số tiền:</label>
+        <input type="number" id="amount" required>
+        
+        <button type="submit">Thêm khoản nợ</button>
+    </form>
+    
+    <h2>Danh sách</h2>
+    <table id="debtTable">
+        <thead>
+            <tr>
+                <th>Họ tên</th>
+                <th>Số tiền</th>
+                <th>Thời gian</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody id="debtList"></tbody>
+    </table>
+
+    <script>
+        const form = document.getElementById('debtForm');
+        const debtList = document.getElementById('debtList');
+        let debts = [];
+
+        function renderDebts() {
+            debtList.innerHTML = '';
+            debts.forEach((debt, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${debt.name}</td>
+                    <td>${debt.amount} VND</td>
+                    <td>${debt.date}</td>
+                    <td class="action-buttons">
+                        <button onclick="editDebt(${index})">Sửa</button>
+                        <button onclick="deleteDebt(${index})">Xóa</button>
+                    </td>
+                `;
+                debtList.appendChild(row);
+            });
+        }
+
+        function addDebt(name, amount) {
+            const now = new Date();
+            const date = now.toLocaleString('vi-VN');
+            debts.push({ name, amount, date });
+            renderDebts();
+        }
+
+        function editDebt(index) {
+            const debt = debts[index];
+            document.getElementById('name').value = debt.name;
+            document.getElementById('amount').value = debt.amount;
+            debts.splice(index, 1);
+            renderDebts();
+        }
+
+        function deleteDebt(index) {
+            debts.splice(index, 1);
+            renderDebts();
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const amount = document.getElementById('amount').value;
+            
+            addDebt(name, amount);
+            
+            form.reset();
+        });
+    </script>
+</body>
+</html>
